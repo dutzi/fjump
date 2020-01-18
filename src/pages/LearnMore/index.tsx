@@ -11,12 +11,12 @@ export default function LearnMore() {
       <div className={styles.explaination}>
         <h1>Why fju.mp?</h1>
         <p>
-          First, f and j keys are easily accessible when{' '}
+          F and j keys are easily accessible when{' '}
           <a href="https://en.wikipedia.org/wiki/Touch_typing">touch typing</a>{' '}
           thanks to their raised dot or bar.
         </p>
         <p>
-          Second, because of how the keys are laid out, typing f, followed by j,
+          Also, because of how the keys are laid out, typing f, followed by j,
           followed by tab is pretty fast.
         </p>
         <p>And lastly, I was happy with the domain I found.</p>
@@ -27,7 +27,7 @@ export default function LearnMore() {
           authentication (you don't even need to set up an account).
         </p>
         <p>
-          Also, as soon as the main html file gets loaded, the URL is parsed and
+          Also, as soon as the main html file gets loaded, the URL is parsed so
           you get redirected almost instantly.
         </p>
         <h1>fjump is free</h1>

@@ -15,6 +15,17 @@ export default function Suggestions() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isRedirecting, setIsRedirecting] = useState(false);
   const [quickNavTrigger, setQuickNavTrigger] = useState('');
+  const [hasUserInteracted, setHasUserInteracted] = useState(false);
+
+  const allCommands = [...userCommands, ...existingCommands];
+
+  const relevantCommands = fuzzy.filter(trigger, allCommands, {
+    pre: '<strong>',
+    post: '</strong>',
+    extract: (command: ICommand) => {
+      return command.trigger;
+    },
+  });
 
   useEffect(() => {
     if (input.current) {
@@ -24,8 +35,10 @@ export default function Suggestions() {
   }, [input, query]);
 
   useEffect(() => {
-    setAnimating(true);
-  }, []);
+    if (relevantCommands.length && !hasUserInteracted) {
+      setAnimating(true);
+    }
+  }, [relevantCommands, hasUserInteracted]);
 
   useEffect(() => {
     if (animating) {
@@ -58,48 +71,51 @@ export default function Suggestions() {
     }, 0);
   }
 
-  function navigateToSelectedCommand() {
-    window.location.href = addSchemaToURL(
-      relevantCommands[selectedIndex].original.url
-    );
+  function navigateToSelectedCommand(newTab?: boolean) {
+    const url = addSchemaToURL(relevantCommands[selectedIndex].original.url);
+    if (newTab) {
+      window.open(url);
+    } else {
+      window.location.href = url;
+      setIsRedirecting(true);
+    }
   }
 
   function handleTriggerKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    // ignore modifier keys
+    if ([68, 18, 68, 93, 91, 73, 16, 17].indexOf(e.keyCode) !== -1) {
+      return;
+    }
+
     if (e.keyCode !== 13) {
       setAnimating(false);
     } else {
-      navigateToSelectedCommand();
-      setIsRedirecting(true);
+      navigateToSelectedCommand(e.metaKey || e.ctrlKey);
+      return;
     }
 
-    if (e.keyCode === 38) {
-      const newIndex = Math.min(
-        selectedIndex === 0 ? relevantCommands.length - 1 : selectedIndex - 1,
-        relevantCommands.length - 1
-      );
-      setSelectedIndex(newIndex);
-      updateQuickNavTrigger(relevantCommands[newIndex].original.trigger);
-      e.preventDefault();
-    } else if (e.keyCode === 40) {
-      const newIndex = Math.min(
-        selectedIndex === relevantCommands.length - 1 ? 0 : selectedIndex + 1,
-        relevantCommands.length - 1
-      );
-      setSelectedIndex(newIndex);
-      updateQuickNavTrigger(relevantCommands[newIndex].original.trigger);
-      e.preventDefault();
+    if (relevantCommands.length) {
+      if (e.keyCode === 38) {
+        const newIndex = Math.min(
+          selectedIndex === 0 ? relevantCommands.length - 1 : selectedIndex - 1,
+          relevantCommands.length - 1
+        );
+        setSelectedIndex(newIndex);
+        updateQuickNavTrigger(relevantCommands[newIndex].original.trigger);
+        e.preventDefault();
+      } else if (e.keyCode === 40) {
+        const newIndex = Math.min(
+          selectedIndex === relevantCommands.length - 1 ? 0 : selectedIndex + 1,
+          relevantCommands.length - 1
+        );
+        setSelectedIndex(newIndex);
+        updateQuickNavTrigger(relevantCommands[newIndex].original.trigger);
+        e.preventDefault();
+      }
     }
+
+    setHasUserInteracted(true);
   }
-
-  const allCommands = [...userCommands, ...existingCommands];
-
-  const relevantCommands = fuzzy.filter(trigger, allCommands, {
-    pre: '<strong>',
-    post: '</strong>',
-    extract: (command: ICommand) => {
-      return command.trigger;
-    },
-  });
 
   const actualSelectedIndex = Math.min(
     relevantCommands.length - 1,
@@ -123,7 +139,7 @@ export default function Suggestions() {
         <strong>"{query}"</strong>
       </p> */}
         <div className={styles.inputWrapper}>
-          <div className={styles.inputLabel}>Redirecting to</div>
+          <div className={styles.inputLabel}>Trigger</div>
           <input
             ref={input}
             className={styles.input}

@@ -32,7 +32,7 @@ export default function Welcome() {
       </div>
       <div className={styles.rightPaneDesktop}>
         <button className={styles.button} onClick={handleStart}>
-          Got It, Lets Go!
+          Got It, Let's Go!
         </button>
         <p>or</p>
         <a href="/learn-more">Learn More</a>

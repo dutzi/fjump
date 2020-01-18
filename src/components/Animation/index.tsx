@@ -123,7 +123,7 @@ export default function Animation() {
         </button>
       )}
       {hasPlayed && (
-        <>
+        <div className={styles.stepDetails}>
           <div
             className={styles.caption}
             dangerouslySetInnerHTML={{
@@ -136,7 +136,7 @@ export default function Animation() {
               __html: imageSeqeunce[currentStep].subCaption ?? '',
             }}
           ></div>
-        </>
+        </div>
       )}
     </div>
   );
