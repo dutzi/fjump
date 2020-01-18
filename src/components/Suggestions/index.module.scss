@@ -1,0 +1,106 @@
+@import '../../partials';
+
+.wrapper {
+  font-size: 1.6em;
+  width: calc(100vw - 6em);
+
+  .inputProgress {
+    position: relative;
+    border-radius: 100px;
+    overflow: hidden;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      height: 100%;
+      width: 0px;
+      background: #e7e7e7;
+      transition: all 0.3s linear;
+    }
+
+    &.animating {
+      &:before {
+        width: 100%;
+        transition: all 1s linear;
+      }
+    }
+
+    .inputWrapper {
+      position: relative;
+      @include input;
+      border-radius: 100px;
+      display: flex;
+      border-color: #2196f3;
+
+      .inputLabel {
+        top: 16px;
+        left: 19px;
+        border-right: 1px solid #999999;
+        padding-right: 0.5em;
+        margin: 0px 0.5em;
+        color: #999999;
+      }
+
+      .input {
+        outline: none;
+        font-size: inherit;
+        padding: 0px;
+        border: none;
+        background: none;
+        flex: 1;
+
+        // @include input;
+      }
+    }
+  }
+
+  .commandsList {
+    margin: 0.6em 1em;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-gap: 0.7em;
+
+    // .command {
+    // display: flex;
+    // align-items: baseline;
+    // margin: 0.7em 0px;
+
+    .trigger {
+      // font-weight: bold;
+      flex: 0 0 180px;
+
+      &.highlight {
+        color: #2196f3;
+      }
+    }
+
+    .arrow {
+      font-size: 0.9em;
+      display: none;
+      margin: 0em 1em;
+    }
+
+    .url {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      color: #999999;
+
+      &.highlight {
+        color: #2196f3;
+      }
+    }
+
+    .selectedIndicator {
+      opacity: 0;
+      color: #2196f3;
+
+      &.show {
+        opacity: 1;
+      }
+    }
+    // }
+  }
+}

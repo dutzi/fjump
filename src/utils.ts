@@ -13,3 +13,13 @@ export function setCommands(commands: ICommand[]) {
 export function addSchemaToURL(url: string): string {
   return (window as any).addSchemaToURL(url);
 }
+
+export function getQuery(): string | null {
+  const searchParams = new URLSearchParams(window.location.search);
+
+  if (searchParams.has('q')) {
+    return searchParams.get('q');
+  }
+
+  return null;
+}

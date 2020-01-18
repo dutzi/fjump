@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import logo from './logo.svg';
 import styles from './App.module.scss';
 import Welcome from './pages/Welcome';
 import LearnMore from './pages/LearnMore';
@@ -19,7 +18,6 @@ type TPage =
   | 'redirecting';
 
 const App: React.FC = () => {
-  // const [query, setQuery] = useState('');
   const tabCompletionEnabled = !!localStorage.getItem('tab-completion-enabled');
   const sawWelcomePage = !!localStorage.getItem('saw-welcome-page');
   const [mode, setMode] = useState<TPage>(
@@ -29,10 +27,6 @@ const App: React.FC = () => {
         : 'welcome'
       : 'my-commands'
   );
-
-  // function handleChangeQuery(e: React.ChangeEvent<HTMLInputElement>) {
-  //   setQuery(e.target.value);
-  // }
 
   useEffect(() => {
     const params = new window.URLSearchParams(window.location.search);
@@ -60,21 +54,6 @@ const App: React.FC = () => {
 
   return (
     <div className={styles.wrapper}>
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <form onSubmit={handleSubmit}>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
       <main className={styles.main}>
         {mode === 'welcome' && <Welcome />}
         {mode === 'learn-more' && <LearnMore />}

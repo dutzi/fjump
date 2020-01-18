@@ -23,6 +23,7 @@ export default function CommandsList({
       <ol className={styles.commands}>
         {commands.map((command, index) => (
           <Command
+            key={command.trigger}
             command={command}
             index={index}
             onChange={handleChange.bind(null, index)}
