@@ -2,7 +2,7 @@
 name: Command Suggestion
 about: Suggest a new command for this project
 title: ''
-labels: enhancement
+labels: Command Suggestion
 assignees: ''
 
 ---
