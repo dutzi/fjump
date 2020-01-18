@@ -87,11 +87,11 @@ export default function MyCommands() {
       <p>Existing Commands:</p>
       <div className={styles.description}>
         These commands come built in. If you have a suggestion for a new one,
-        head over to{' '}
-        <a href="https://github.com/dutzi/fjump/blob/master/public/index.html#L51-L82">
+        please head over to{' '}
+        <a href="https://github.com/dutzi/fjump/issues/new?labels=Command+Suggestion&template=command-suggestion.md">
           the repo
         </a>{' '}
-        and fork it!
+        and file an issue!
       </div>
       <CommandsList commands={existingCommands} />
       <Footer />
