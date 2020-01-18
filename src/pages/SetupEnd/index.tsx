@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import styles from './index.module.scss';
 
-export default function TabCompletion() {
+export default function SetupEnd() {
   const addCommandButton = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {

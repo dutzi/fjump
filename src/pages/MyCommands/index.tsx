@@ -5,6 +5,7 @@ import CommandsList from '../../components/CommandsList';
 import existingCommands from '../../existing-commands';
 import CommandEditor from '../../components/CommandEditor';
 import { getCommands, setCommands } from '../../utils';
+import Footer from '../../components/Footer';
 
 export default function MyCommands() {
   const [userCommands, setUserCommands] = useState<ICommand[]>([]);
@@ -36,10 +37,11 @@ export default function MyCommands() {
     setShowNewCommandEditor(false);
   }
 
-  function handleEdit(index: number) {
-    // const commands = getCommands();
-    // setCommands(commands);
-    // loadCommands();
+  function handleEdit(index: number, command: ICommand) {
+    const commands = getCommands();
+    commands[index] = command;
+    setCommands(commands);
+    loadCommands();
   }
 
   function handleDelete(index: number) {
@@ -89,10 +91,14 @@ export default function MyCommands() {
       <p>Existing Commands:</p>
       <div className={styles.description}>
         These commands come built in. If you have a suggestion for a new one,
-        head over to <a href="https://github.com/dutzi/fjump">our repo</a> and
-        fork it!
+        head over to{' '}
+        <a href="https://github.com/dutzi/fjump/blob/master/public/index.html#L51-L82">
+          our repo
+        </a>{' '}
+        and fork it!
       </div>
       <CommandsList commands={existingCommands} />
+      <Footer />
     </div>
   );
 }

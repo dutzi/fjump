@@ -2,14 +2,18 @@ import React, { useState, useEffect } from 'react';
 // import logo from './logo.svg';
 import styles from './App.module.scss';
 import Welcome from './pages/Welcome';
-import TabCompletion from './pages/TabCompletion';
+import LearnMore from './pages/LearnMore';
+import SetupEnd from './pages/SetupEnd';
 import AddFirstCommand from './pages/AddFirstCommand';
 import MyCommands from './pages/MyCommands';
 import Redirecting from './pages/Redirecting';
+import SetupStart from './pages/SetupStart';
 
 type TPage =
   | 'welcome'
-  | 'tab-completion'
+  | 'learn-more'
+  | 'setup-start'
+  | 'setup-end'
   | 'add-first-command'
   | 'my-commands'
   | 'redirecting';
@@ -17,8 +21,13 @@ type TPage =
 const App: React.FC = () => {
   // const [query, setQuery] = useState('');
   const tabCompletionEnabled = !!localStorage.getItem('tab-completion-enabled');
+  const sawWelcomePage = !!localStorage.getItem('saw-welcome-page');
   const [mode, setMode] = useState<TPage>(
-    !tabCompletionEnabled ? 'welcome' : 'my-commands'
+    !tabCompletionEnabled
+      ? sawWelcomePage
+        ? 'setup-start'
+        : 'welcome'
+      : 'my-commands'
   );
 
   // function handleChangeQuery(e: React.ChangeEvent<HTMLInputElement>) {
@@ -30,13 +39,17 @@ const App: React.FC = () => {
     if (params.has('q')) {
       const query = params.get('q');
       if (query === 'example command') {
-        setMode('tab-completion');
+        setMode('setup-end');
       } else {
         setMode('redirecting');
       }
     } else {
       if (window.location.pathname === '/add-first-command') {
         setMode('add-first-command');
+      } else if (window.location.pathname === '/setup') {
+        setMode('setup-start');
+      } else if (window.location.pathname === '/learn-more') {
+        setMode('learn-more');
       } else if (window.location.pathname === '/my-commands') {
         setMode('my-commands');
       }
@@ -62,7 +75,9 @@ const App: React.FC = () => {
       </header> */}
       <main className={styles.main}>
         {mode === 'welcome' && <Welcome />}
-        {mode === 'tab-completion' && <TabCompletion />}
+        {mode === 'learn-more' && <LearnMore />}
+        {mode === 'setup-start' && <SetupStart />}
+        {mode === 'setup-end' && <SetupEnd />}
         {mode === 'add-first-command' && <AddFirstCommand />}
         {mode === 'my-commands' && <MyCommands />}
         {mode === 'redirecting' && <Redirecting />}

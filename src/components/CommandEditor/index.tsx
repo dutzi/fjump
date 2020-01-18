@@ -15,6 +15,7 @@ export default function CommandEditor({
   onCancel: () => void;
 }) {
   const input = useRef<HTMLInputElement>(null);
+
   const [trigger, setTrigger] = useState(newCommand ? '' : command!.trigger);
   const [url, setUrl] = useState(newCommand ? '' : command!.url);
 
@@ -26,7 +27,7 @@ export default function CommandEditor({
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    onSubmit({ trigger, url, executeCount: 0 });
+    onSubmit({ trigger, url, executeCount: command?.executeCount ?? 0 });
   }
 
   function handleCancel(e: React.MouseEvent) {
@@ -47,7 +48,9 @@ export default function CommandEditor({
           ref={input}
           id="trigger"
           className={styles.input}
+          value={trigger}
           onChange={e => setTrigger(e.currentTarget.value)}
+          placeholder={'"docs new", for example'}
         ></input>
         <div className={styles.label}>
           <label htmlFor="url">URL</label>
@@ -55,7 +58,9 @@ export default function CommandEditor({
         <input
           id="url"
           className={styles.input}
+          value={url}
           onChange={e => setUrl(e.currentTarget.value)}
+          placeholder={'https://docs.google.com/document/u/0/create'}
         ></input>
         <div className={styles.actions}>
           <a href="#cancel" className={styles.mutedLink} onClick={handleCancel}>

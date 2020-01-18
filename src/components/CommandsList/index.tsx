@@ -3,6 +3,7 @@ import styles from './index.module.scss';
 import { ICommand } from '../../types';
 import { getCommands, setCommands, addSchemaToURL } from '../../utils';
 import CommandEditor from '../CommandEditor';
+import Command from '../Command';
 
 export default function CommandsList({
   commands,
@@ -11,45 +12,25 @@ export default function CommandsList({
   editable,
 }: {
   commands: ICommand[];
-  onEdit?: (index: number) => void;
+  onEdit?: (index: number, command: ICommand) => void;
   onDelete?: (index: number) => void;
   editable?: boolean;
 }) {
+  function handleChange(index: number, command: ICommand) {
+    onEdit!(index, command);
+  }
+
   return (
     <div className={styles.wrapper}>
       <ol className={styles.commands}>
         {commands.map((command, index) => (
-          <li key={command.trigger} className={styles.command}>
-            <div className={styles.trigger}>{command.trigger}</div>
-            {command.description && (
-              <div className={styles.description}>{command.description}</div>
-            )}
-            <div className={styles.url}>
-              <a
-                href={addSchemaToURL(command.url)}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {command.url}
-              </a>
-            </div>
-            {editable && (
-              <div className={styles.commandActions}>
-                <button
-                  className={styles.button}
-                  onClick={onEdit?.bind(null, index)}
-                >
-                  <img src="https://icon.now.sh/edit" alt="Edit" />
-                </button>
-                <button
-                  className={styles.button}
-                  onClick={onDelete?.bind(null, index)}
-                >
-                  <img src="https://icon.now.sh/delete_forever" alt="Delete" />
-                </button>
-              </div>
-            )}
-          </li>
+          <Command
+            command={command}
+            index={index}
+            onChange={handleChange.bind(null, index)}
+            onDelete={onDelete}
+            editable={editable}
+          />
         ))}
       </ol>
     </div>
