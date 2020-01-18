@@ -1,8 +1,11 @@
 import React from 'react';
 import styles from './index.module.scss';
 import Footer from '../../components/Footer';
+import { useIsActiveUser } from '../../hooks';
 
 export default function LearnMore() {
+  const isActiveUser = useIsActiveUser();
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.explaination}>
@@ -33,7 +36,7 @@ export default function LearnMore() {
           free (and will always be free).
         </p>
       </div>
-      <Footer />
+      {isActiveUser && <Footer />}
     </div>
   );
 }

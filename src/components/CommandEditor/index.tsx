@@ -70,7 +70,7 @@ export default function CommandEditor({
           <input
             className={styles.primaryButton}
             type="submit"
-            value="Add"
+            value={newCommand ? 'Add' : 'Update'}
             disabled={isSubmitDisabled}
           />
         </div>

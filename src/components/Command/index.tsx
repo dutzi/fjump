@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import styles from './index.module.scss';
 import { ICommand } from '../../types';
-import { getCommands, setCommands, addSchemaToURL } from '../../utils';
+import { addSchemaToURL } from '../../utils';
 import CommandEditor from '../CommandEditor';
 
 export default function Command({

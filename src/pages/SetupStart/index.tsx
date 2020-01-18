@@ -14,14 +14,15 @@ export default function SetupStart() {
     <div className={styles.wrapper}>
       <div className={styles.setup}>
         <p>
-          Welcome to f
+          {/* Welcome to f
           <sup className={styles.mutedText}>
             a
             <sup>
               s<sup>t</sup>
             </sup>
           </sup>
-          ju.mp, first lets enable tab to search.
+          ju.mp, first lets enable tab to search. */}
+          First, lets enable tab to search.
         </p>
         <p>
           To do that, simply <strong>hit enter.</strong>

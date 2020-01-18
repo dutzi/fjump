@@ -63,6 +63,7 @@ export default function MyCommands() {
             className={styles.button}
             type="submit"
             value="Add Command"
+            disabled={!url.trim() || !trigger.trim()}
           ></input>
           <div className="margin-h-sm" />
           <a className={styles.link} href="/my-commands">

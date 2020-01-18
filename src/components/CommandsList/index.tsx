@@ -1,8 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import styles from './index.module.scss';
 import { ICommand } from '../../types';
-import { getCommands, setCommands, addSchemaToURL } from '../../utils';
-import CommandEditor from '../CommandEditor';
 import Command from '../Command';
 
 export default function CommandsList({

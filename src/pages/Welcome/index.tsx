@@ -1,6 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import styles from './index.module.scss';
 import Animation from '../../components/Animation';
+import Footer from '../../components/Footer';
+import { useIsActiveUser } from '../../hooks';
 
 export default function Welcome() {
   function handleStart() {
@@ -8,11 +10,13 @@ export default function Welcome() {
     window.location.pathname = '/setup';
   }
 
+  const isActiveUser = useIsActiveUser();
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.explaination}>
         <h1>
-          What is f
+          Welcome to f
           <sup className={styles.mutedText}>
             a
             <sup>
@@ -23,18 +27,21 @@ export default function Welcome() {
         </h1>
         <p>fjump is web app that makes navigating to URLs faster.</p>
         <p>It does so by utilizing Chrome's tab-to-search feature.</p>
-        <p>This should explain it:</p>
-        <p>
-          <Animation />
-        </p>
+        <p>The following should explain it:</p>
+        <Animation />
       </div>
-      <div className={styles.buttonWrapper}>
+      <div className={styles.rightPaneDesktop}>
         <button className={styles.button} onClick={handleStart}>
           Got It, Lets Go!
         </button>
         <p>or</p>
         <a href="/learn-more">Learn More</a>
       </div>
+      <div className={styles.rightPaneMobile}>
+        fjump doesn't work on mobiles though, since there's no tab-to-search,
+        but check it out once you get to your desktop!
+      </div>
+      {isActiveUser && <Footer />}
     </div>
   );
 }

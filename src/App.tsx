@@ -46,6 +46,8 @@ const App: React.FC = () => {
     } else {
       if (window.location.pathname === '/add-first-command') {
         setMode('add-first-command');
+      } else if (window.location.pathname === '/home') {
+        setMode('welcome');
       } else if (window.location.pathname === '/setup') {
         setMode('setup-start');
       } else if (window.location.pathname === '/learn-more') {

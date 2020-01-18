@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './index.module.scss';
 import { ICommand } from '../../types';
 import CommandsList from '../../components/CommandsList';
@@ -59,11 +59,7 @@ export default function MyCommands() {
           <p>You can still use the existing commands listed below.</p>
         </div>
       )}
-      {userCommands.length > 0 && (
-        <>
-          <p>Your Commands:</p>
-        </>
-      )}
+      {userCommands.length > 0 && <p>Your Commands:</p>}
 
       <CommandsList
         commands={userCommands}
@@ -93,7 +89,7 @@ export default function MyCommands() {
         These commands come built in. If you have a suggestion for a new one,
         head over to{' '}
         <a href="https://github.com/dutzi/fjump/blob/master/public/index.html#L51-L82">
-          our repo
+          the repo
         </a>{' '}
         and fork it!
       </div>
