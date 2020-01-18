@@ -1,0 +1,32 @@
+@import '../../partials';
+
+.wrapper {
+  font-size: 1.6em;
+}
+
+.input {
+  font-size: 1em;
+  padding: 0.5em;
+  width: calc(100% - 1em);
+  border-radius: 16px;
+  border: 3px solid #aaaaaa;
+  outline: none;
+
+  &:focus {
+    border: 3px solid #2196f3;
+  }
+}
+
+.p {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+}
+
+.button {
+  @include button;
+}
+
+.link {
+  @include link;
+  color: #aaaaaa;
+}

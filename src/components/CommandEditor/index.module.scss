@@ -1,0 +1,40 @@
+@import '../../partials';
+
+.wrapper {
+  &.new {
+    .form {
+      padding-inline-start: 40px;
+    }
+  }
+
+  .form {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 0.8em 1em;
+    align-items: baseline;
+
+    .label {
+      text-align: end;
+    }
+  }
+
+  .input {
+    @include input;
+  }
+
+  .actions {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+
+    .mutedLink {
+      color: #999999;
+    }
+
+    .primaryButton {
+      @include primary-button;
+    }
+  }
+}
