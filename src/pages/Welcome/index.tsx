@@ -26,7 +26,7 @@ export default function Welcome() {
           jump
         </h1>
         <p>fjump is web app that makes navigating to URLs faster.</p>
-        <p>It does so by utilizing Chrome's tab-to-search feature.</p>
+        <p>It does so utilizing Chrome's tab-to-search feature.</p>
         <p>The following should explain it:</p>
         <Animation />
       </div>
