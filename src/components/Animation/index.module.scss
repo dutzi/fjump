@@ -16,7 +16,7 @@
 
   .subCaption {
     font-size: 0.75em;
-    color: #aaaaaa;
+    color: #999999;
   }
 
   @mixin navButton {
@@ -123,5 +123,11 @@
       text-align: right;
       margin-right: -20px;
     }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .wrapper .counter:before {
+    background: #444444;
   }
 }

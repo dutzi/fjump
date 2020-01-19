@@ -2,7 +2,7 @@
 
 .wrapper {
   font-size: 1.6em;
-  width: calc(100vw - 6em);
+  width: calc(100vw - 4em);
 
   .inputProgress {
     position: relative;
@@ -50,6 +50,7 @@
         border: none;
         background: none;
         flex: 1;
+        color: inherit;
 
         // @include input;
       }
@@ -102,5 +103,15 @@
       }
     }
     // }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .wrapper {
+    .inputProgress {
+      &:before {
+        background: #555555;
+      }
+    }
   }
 }

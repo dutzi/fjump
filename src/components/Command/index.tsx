@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './index.module.scss';
 import { ICommand } from '../../types';
-import { addSchemaToURL } from '../../utils';
+import { addSchemaToURL, isDarkMode } from '../../utils';
 import CommandEditor from '../CommandEditor';
 
 export default function Command({
@@ -18,6 +18,8 @@ export default function Command({
   onChange: (command: ICommand) => void;
 }) {
   const [isEditing, setIsEditing] = useState(false);
+
+  const iconColor = isDarkMode() ? 'ffffff' : '000000';
 
   function handleEdit() {
     setIsEditing(true);
@@ -63,13 +65,16 @@ export default function Command({
         {editable && (
           <div className={styles.commandActions}>
             <button className={styles.button} onClick={handleEdit}>
-              <img src="https://icon.now.sh/edit" alt="Edit" />
+              <img src={`https://icon.now.sh/edit/${iconColor}`} alt="Edit" />
             </button>
             <button
               className={styles.button}
               onClick={onDelete?.bind(null, index)}
             >
-              <img src="https://icon.now.sh/delete_forever" alt="Delete" />
+              <img
+                src={`https://icon.now.sh/delete_forever/${iconColor}`}
+                alt="Delete"
+              />
             </button>
           </div>
         )}

@@ -26,6 +26,12 @@
   @include button;
 }
 
+@media (prefers-color-scheme: dark) {
+  .button {
+    color: #000000;
+  }
+}
+
 .link {
   @include link;
   color: #aaaaaa;

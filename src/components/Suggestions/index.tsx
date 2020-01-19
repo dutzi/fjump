@@ -72,7 +72,9 @@ export default function Suggestions() {
   }
 
   function navigateToSelectedCommand(newTab?: boolean) {
-    const url = addSchemaToURL(relevantCommands[selectedIndex].original.url);
+    const url = addSchemaToURL(
+      relevantCommands[actualSelectedIndex].original.url
+    );
     if (newTab) {
       window.open(url);
     } else {

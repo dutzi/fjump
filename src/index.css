@@ -27,3 +27,17 @@ code {
 a {
   color: #2196f3;
 }
+
+@media (prefers-color-scheme: dark) {
+  html {
+    background-color: #292929;
+  }
+
+  body {
+    color: white;
+  }
+
+  code {
+    color: black;
+  }
+}
