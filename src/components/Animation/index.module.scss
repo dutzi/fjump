@@ -69,21 +69,34 @@
 
   .stepDetails {
     margin-bottom: 1em;
+    min-height: 3em;
   }
 
   .playButton {
-    font-size: 3.1em;
     position: absolute;
-    background: white;
-    border-radius: 10px;
-    width: 220px;
-    height: 110px;
-    border: 1px solid #999;
-    box-shadow: 0px 0px 180px 10px #000000eb, 0px 0px 7px #00000059;
+    border: none;
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%) translateY(-20px);
     cursor: pointer;
+    z-index: 1;
+    background: no-repeat;
+    width: 84px;
+    height: 60px;
+    padding: 0px;
+    outline: none;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    &:hover,
+    &:focus {
+      path {
+        fill: #cc181e;
+      }
+    }
   }
 
   .prevButton {

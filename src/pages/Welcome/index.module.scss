@@ -3,23 +3,29 @@
 .wrapper {
   display: grid;
   width: calc(100vw - 4em);
+  min-height: calc(100vh - 4em);
   grid-template-columns: auto 1fr;
   font-size: 1.6em;
 
-  h1 {
-    margin-top: 0px;
-  }
+  .leftPane {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-  .mutedText {
-    color: #999999;
+    * {
+      margin-top: 0px;
+    }
+
+    .mutedText {
+      text-shadow: 0px 0px 22px #49c6ff;
+    }
   }
 
   .rightPaneDesktop {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    margin-top: 10em;
+    justify-content: center;
 
     p {
       margin: 0.3em 0px;
@@ -30,9 +36,33 @@
     display: none;
   }
 
-  .button {
-    @include primary-button;
-    font-size: 1.6em;
+  .actions {
+    flex-direction: column;
+    display: flex;
+    align-items: flex-start;
+
+    .button {
+      @include primary-button;
+      background: linear-gradient(#00bcd4, #03a9f4);
+      border-radius: 10px;
+      padding: 0.3em 0.75em 0.4em;
+      border: none;
+      font-size: 1.4em;
+      margin-bottom: 0.3em;
+      margin-top: 1em;
+      -webkit-text-stroke: 1px white;
+      transition: none;
+      box-shadow: 0px 0px 30px #03a9f4;
+
+      &:focus {
+        box-shadow: 0px 0px 3px black, 0px 0px 40px #03a9f4;
+        border: none;
+      }
+    }
+
+    a {
+      color: #999999;
+    }
   }
 }
 

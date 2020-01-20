@@ -14,7 +14,7 @@ export default function Welcome() {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.explaination}>
+      <div className={styles.leftPane}>
         <h1>
           Welcome to f
           <sup className={styles.mutedText}>
@@ -27,15 +27,15 @@ export default function Welcome() {
         </h1>
         <p>fjump is a web app that makes navigating to URLs faster.</p>
         <p>It does so utilizing Chrome's tab-to-search feature.</p>
-        <p>The following should explain it:</p>
-        <Animation />
+        <div className={styles.actions}>
+          <button className={styles.button} onClick={handleStart}>
+            Got It, Let's Go!
+          </button>
+          <a href="/learn-more">Learn More</a>
+        </div>
       </div>
       <div className={styles.rightPaneDesktop}>
-        <button className={styles.button} onClick={handleStart}>
-          Got It, Let's Go!
-        </button>
-        <p>or</p>
-        <a href="/learn-more">Learn More</a>
+        <Animation />
       </div>
       <div className={styles.rightPaneMobile}>
         fjump doesn't work on mobiles though, since there's no tab-to-search,
