@@ -29,7 +29,7 @@ export default function CommandEditor({
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    onSubmit({ trigger, url, executeCount: command?.executeCount ?? 0 });
+    onSubmit({ trigger, url });
   }
 
   function handleCancel(e: React.MouseEvent) {

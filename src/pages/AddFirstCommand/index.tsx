@@ -23,7 +23,7 @@ export default function MyCommands() {
 
   function hanbdleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    addCommand({ trigger, url, executeCount: 0 });
+    addCommand({ trigger, url });
   }
 
   return (

@@ -22,7 +22,7 @@ export default function AddCommand() {
       <CommandEditor
         newCommand
         fullWidth
-        command={{ trigger: '', url: query!, executeCount: 0 }}
+        command={{ trigger: '', url: query! }}
         onSubmit={handleSubmit}
         onCancel={handleCancel}
       />
