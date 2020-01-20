@@ -32,7 +32,8 @@ export default function MyCommands() {
         <p>Ok, now let's add your first command.</p>
         <label htmlFor="command">
           <p className={styles.p}>
-            A <strong>trigger</strong> is what you type to go to a URL.
+            A command's <strong>trigger</strong> is what you type to go to a
+            URL.
           </p>
           <p className={styles.p}>
             Enter a <strong>trigger</strong> for your command:

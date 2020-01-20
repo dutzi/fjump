@@ -1,23 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { getCommands, getQuery } from '../../utils';
 import Suggestions from '../../components/Suggestions';
+import AddCommand from '../../components/AddCommand';
+
+type TMode = 'show-suggestions' | 'add-command';
 
 export default function Redirecting() {
-  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [mode, setMode] = useState<TMode>();
+  const query = getQuery();
 
   useEffect(() => {
     const commands = getCommands();
-    const query = getQuery();
     const command = commands.find(command => command.trigger === query);
 
     if (!command) {
-      setShowSuggestions(true);
+      if (query?.startsWith('http:') || query?.startsWith('https:')) {
+        setMode('add-command');
+      } else {
+        setMode('show-suggestions');
+      }
     }
   }, []);
 
-  if (!showSuggestions) {
+  if ((window as any).dontDisplayApp) {
     return null;
-  } else {
-    return <Suggestions />;
   }
+
+  if (mode === 'show-suggestions') {
+    return <Suggestions />;
+  } else if (mode === 'add-command') {
+    return <AddCommand />;
+  }
+
+  return null;
 }

@@ -7,6 +7,10 @@
     }
   }
 
+  &.fullWidth {
+    width: calc(100vw - 4em);
+  }
+
   .form {
     display: grid;
     grid-template-columns: auto 1fr;

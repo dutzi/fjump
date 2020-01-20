@@ -7,7 +7,7 @@ import { useIsActiveUser } from '../../hooks';
 export default function Welcome() {
   function handleStart() {
     localStorage.setItem('saw-welcome-page', 'true');
-    window.location.pathname = '/setup';
+    window.location.pathname = '/onboarding';
   }
 
   const isActiveUser = useIsActiveUser();
@@ -25,7 +25,7 @@ export default function Welcome() {
           </sup>
           jump
         </h1>
-        <p>fjump is web app that makes navigating to URLs faster.</p>
+        <p>fjump is a web app that makes navigating to URLs faster.</p>
         <p>It does so utilizing Chrome's tab-to-search feature.</p>
         <p>The following should explain it:</p>
         <Animation />

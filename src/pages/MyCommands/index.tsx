@@ -13,6 +13,10 @@ export default function MyCommands() {
 
   useEffect(loadCommands, []);
 
+  useEffect(() => {
+    localStorage.setItem('skip-welcome', 'true');
+  }, []);
+
   function loadCommands() {
     setUserCommands(getCommands());
   }

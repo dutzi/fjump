@@ -8,16 +8,18 @@ export default function CommandEditor({
   newCommand,
   onSubmit,
   onCancel,
+  fullWidth,
 }: {
   command?: ICommand;
   newCommand?: boolean;
   onSubmit: (command: ICommand) => void;
   onCancel: () => void;
+  fullWidth?: boolean;
 }) {
   const input = useRef<HTMLInputElement>(null);
 
-  const [trigger, setTrigger] = useState(newCommand ? '' : command!.trigger);
-  const [url, setUrl] = useState(newCommand ? '' : command!.url);
+  const [trigger, setTrigger] = useState(command?.trigger ?? '');
+  const [url, setUrl] = useState(command?.url ?? '');
 
   useEffect(() => {
     if (input.current) {
@@ -38,8 +40,19 @@ export default function CommandEditor({
   const isSubmitDisabled = !trigger.trim() || !url.trim();
 
   return (
-    <div className={cx(styles.wrapper, newCommand && styles.new)}>
-      {newCommand && <p>Create a new command:</p>}
+    <div
+      className={cx(
+        styles.wrapper,
+        newCommand && styles.new,
+        fullWidth && styles.fullWidth
+      )}
+    >
+      {newCommand && !command && <p>Create a new command:</p>}
+      {newCommand && command && (
+        <p>
+          Create a new command for <strong>{command.url}:</strong>
+        </p>
+      )}
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.label}>
           <label htmlFor="trigger">Trigger</label>
@@ -63,9 +76,15 @@ export default function CommandEditor({
           placeholder={'https://docs.google.com/document/u/0/create'}
         ></input>
         <div className={styles.actions}>
-          <a href="#cancel" className={styles.mutedLink} onClick={handleCancel}>
-            Cancel
-          </a>
+          {!(newCommand && command) && (
+            <a
+              href="#cancel"
+              className={styles.mutedLink}
+              onClick={handleCancel}
+            >
+              Cancel
+            </a>
+          )}
           <div className="margin-v-sm" />
           <input
             className={styles.primaryButton}

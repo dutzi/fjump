@@ -12,6 +12,8 @@ export default function SetupEnd() {
     localStorage.setItem('tab-completion-enabled', 'true');
   }, []);
 
+  const modifierKey = window.navigator.platform === 'MacIntel' ? 'Cmd' : 'Ctrl';
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.setup}>
@@ -22,9 +24,10 @@ export default function SetupEnd() {
           </span>
         </p>
         <p>
-          You can now focus on Chrome's URL bar (Cmd+L), type <code>fj</code>{' '}
-          and then hit <code>tab</code>, type a command, hit <code>enter</code>{' '}
-          and you'll be quickly redirected to the command's URL.
+          You can now focus on Chrome's URL bar ({modifierKey}+L), type{' '}
+          <code>fj</code> and then hit <code>tab</code>, type a command, hit{' '}
+          <code>enter</code> and you'll be quickly redirected to the command's
+          URL.
         </p>
         <p>
           Now let's add commands, <strong>hit enter</strong> again!

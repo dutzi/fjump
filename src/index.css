@@ -28,6 +28,15 @@ a {
   color: #2196f3;
 }
 
+code {
+  font-size: 0.9em;
+  background: #ddd;
+  border: 1px solid #ccc;
+  font-weight: bold;
+  padding: 0em 0.1em;
+  border-radius: 3px;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     background-color: #292929;
@@ -38,6 +47,8 @@ a {
   }
 
   code {
-    color: black;
+    background: #3e3e3e;
+    border: 1px solid #545454;
+    color: white;
   }
 }

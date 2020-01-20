@@ -10,17 +10,17 @@ const imageSeqeunce = [
   },
   {
     caption: 'You then hit <code>Tab</code>...',
-    subCaption: 'Chrome will offer to "Search fju.mp"',
+    subCaption: 'Chrome will offer to "Search fjump.to"',
   },
   {
     caption:
       'You type <strong>"docs new"</strong> and hit <code>Enter</code>...',
     // subCaption:
-    //   'A command trigger is simply a string that tells fju.mp where you want to go',
+    //   'A command trigger is simply a string that tells fjump.to where you want to go',
   },
   {
     caption:
-      'Chrome will open <a href="https://fju.mp/?q=docs+new">https://fju.mp/?q=<strong>docs+new</strong></a>',
+      'Chrome will open <a href="https://fjump.to/?q=docs+new">https://fjump.to/?q=<strong>docs+new</strong></a>',
   },
   {
     caption:

@@ -20,3 +20,14 @@
     border: 3px solid #2196f3;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .input {
+    color: inherit;
+    background: transparent;
+
+    &:focus {
+      background: #444444;
+    }
+  }
+}

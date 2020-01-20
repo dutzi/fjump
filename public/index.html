@@ -9,6 +9,11 @@
       name="description"
       content="Web site created using create-react-app"
     />
+    <link
+      rel="search"
+      type="application/opensearchdescription+xml"
+      href="data/opensearch.xml"
+    />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -42,12 +47,6 @@
       gtag('config', 'UA-7442821-17');
     </script>
 
-    <script>
-      if (location.pathname.startsWith('/e/')) {
-        const extensionName = location.pathname.split('/e/')[1];
-        location.href = `https://marketplace.visualstudio.com/items?itemName=${extensionName}`;
-      }
-    </script>
     <script>
       window.existingCommands = [
         {
@@ -122,6 +121,12 @@
           const command = commands.find(command => command.trigger === query);
           if (command) {
             window.location.href = window.addSchemaToURL(command.url);
+            window.dontDisplayApp = true;
+
+            const channel = new BroadcastChannel('main-channel');
+            channel.postMessage('first-redirect');
+
+            localStorage.setItem('skip-welcome', 'true');
           }
         }
       }

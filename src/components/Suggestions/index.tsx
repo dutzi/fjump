@@ -35,7 +35,7 @@ export default function Suggestions() {
   }, [input, query]);
 
   useEffect(() => {
-    if (relevantCommands.length && !hasUserInteracted) {
+    if (relevantCommands.length && !hasUserInteracted && query.length) {
       setAnimating(true);
     }
   }, [relevantCommands, hasUserInteracted]);

@@ -1,0 +1,65 @@
+@import '../../partials';
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.wrapper {
+  font-size: 1.6em;
+
+  &.focusedOnUrlBar {
+    .animatedChevron {
+      display: none;
+    }
+
+    .step1 {
+      text-decoration: line-through;
+    }
+  }
+
+  .content {
+    padding-top: 300px;
+  }
+
+  ol {
+    line-height: 1.6;
+  }
+
+  &.hasRedirected {
+    li {
+      text-decoration: line-through;
+    }
+  }
+
+  .animatedChevron {
+    position: absolute;
+    top: 0.25em;
+    margin: auto;
+    display: block;
+    animation: slide-up 2s ease-out infinite;
+    text-align: center;
+    margin-left: 200px;
+  }
+
+  .mutedText {
+    font-size: 0.8em;
+    color: #999999;
+  }
+
+  .hidden {
+    opacity: 0;
+  }
+
+  .gutter {
+    a {
+      color: #999999;
+    }
+  }
+}
