@@ -109,8 +109,13 @@
 @media (prefers-color-scheme: dark) {
   .wrapper {
     .inputProgress {
+      background-color: #333333;
       &:before {
-        background: #555555;
+        background: #444444;
+      }
+
+      .inputWrapper {
+        background: none;
       }
     }
   }
