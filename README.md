@@ -26,13 +26,11 @@ Also, as soon as the main html file gets loaded, the URL is parsed so you get re
 
 fjump is [open source](https://github.com/dutzi/fjump) and free (and will always be free).
 
-## Also...
-
-### Fuzzy Search
+## Fuzzy Search
 
 fjump uses fuzzy search when looking up which command to run, if no command found it will serve you a list of the closest commands available, and will redirect you to the closest one within 1 second. Within that 1 second you can use the arrow keys to choose a different command, or refine your query by retyping the trigger.
 
-### Adding Commands
+## Adding Commands
 
 You can add commands by navigating to [fjump.to](https://fjump.to/) and clicking on Add Command, _or_ you can save some clicks by copying the URL you want the command to redirect you to and hitting `f`, `j` and `Tab`, pasting the URL and then hitting `Enter`. fjump will offer creating a new command with that URL so all you need to do is enter a trigger and hit `Enter` to submit.
 
