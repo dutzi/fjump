@@ -45,7 +45,7 @@ export default function LearnMore() {
         </p>
         <h2>Adding Commands</h2>
         <p>
-          You can add commands by navigating to <a href="/">fjump.to</a> and
+          You can add commands by navigating to <a href="/">fjump.xyz</a> and
           clicking on Add Command, <em>or</em> you can save some clicks by
           copying the URL you want the command to redirect you to and hitting{' '}
           <code>f</code>, <code>j</code> and <code>Tab</code>, pasting the URL

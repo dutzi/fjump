@@ -6,7 +6,7 @@ fjump is a simple, light-weight web app that makes navigating to URLs faster, it
 
 Say you want to create a new Google document, instead of navigating to https://docs.google.com/, waiting for it to load and become responsive and clicking on "Start a new document", you simply type `fj`, hit `Tab`, type `docs new` (or just `dn`, if you're lazy) and hit `Enter`.
 
-Chrome will then open https://fjump.to/?q=docs+new which in turn will parse the query string and redirect you to https://docs.google.com/document/u/0/create.
+Chrome will then open https://fjump.xyz/?q=docs+new which in turn will parse the query string and redirect you to https://docs.google.com/document/u/0/create.
 
 This can be useful in any number of cases where reaching some URL can be a bit convoluted.
 
@@ -32,7 +32,7 @@ fjump uses fuzzy search when looking up which command to run, if no command foun
 
 ## Adding Commands
 
-You can add commands by navigating to [fjump.to](https://fjump.to/) and clicking on Add Command, _or_ you can save some clicks by copying the URL you want the command to redirect you to and hitting `f`, `j` and `Tab`, pasting the URL and then hitting `Enter`. fjump will offer creating a new command with that URL so all you need to do is enter a trigger and hit `Enter` to submit.
+You can add commands by navigating to [fjump.xyz](https://fjump.xyz/) and clicking on Add Command, _or_ you can save some clicks by copying the URL you want the command to redirect you to and hitting `f`, `j` and `Tab`, pasting the URL and then hitting `Enter`. fjump will offer creating a new command with that URL so all you need to do is enter a trigger and hit `Enter` to submit.
 
 ## develop
 
