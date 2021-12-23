@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { ReactComponent as ChevronUpIcon } from '../../svgs/chevron-up.svg';
 import cx from 'classnames';
 import styles from './index.module.scss';
-import Icon from '../../components/Icon';
 
 export default function Onboarding() {
   const addCommandButton = useRef<HTMLAnchorElement>(null);
@@ -55,7 +55,7 @@ export default function Onboarding() {
   useEffect(() => {
     const channel = new BroadcastChannel('main-channel');
 
-    channel.onmessage = function({ data }) {
+    channel.onmessage = function ({ data }) {
       if (data === 'first-redirect') {
         setHasRedirected(true);
       }
@@ -71,7 +71,7 @@ export default function Onboarding() {
       )}
     >
       <div className={styles.animatedChevron}>
-        <Icon type="chevron/up" size={32} />
+        <ChevronUpIcon style={{ width: '25px' }} />
         <div>{modifierKey}+L</div>
       </div>
       <div className={styles.content}>

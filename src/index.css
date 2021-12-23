@@ -52,3 +52,7 @@ code {
     color: white;
   }
 }
+
+button {
+  color: inherit;
+}

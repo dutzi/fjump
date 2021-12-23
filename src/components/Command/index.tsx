@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { ReactComponent as DeleteIcon } from '../../svgs/delete.svg';
+import { ReactComponent as EditIcon } from '../../svgs/edit.svg';
 import styles from './index.module.scss';
 import { ICommand } from '../../types';
-import { addSchemaToURL, isDarkMode } from '../../utils';
+import { addSchemaToURL } from '../../utils';
 import CommandEditor from '../CommandEditor';
 
 export default function Command({
@@ -18,8 +20,6 @@ export default function Command({
   onChange: (command: ICommand) => void;
 }) {
   const [isEditing, setIsEditing] = useState(false);
-
-  const iconColor = isDarkMode() ? 'ffffff' : '000000';
 
   function handleEdit() {
     setIsEditing(true);
@@ -65,16 +65,13 @@ export default function Command({
         {editable && (
           <div className={styles.commandActions}>
             <button className={styles.button} onClick={handleEdit}>
-              <img src={`https://icon.now.sh/edit/${iconColor}`} alt="Edit" />
+              <EditIcon style={{ width: '20px' }} />
             </button>
             <button
               className={styles.button}
               onClick={onDelete?.bind(null, index)}
             >
-              <img
-                src={`https://icon.now.sh/delete_forever/${iconColor}`}
-                alt="Delete"
-              />
+              <DeleteIcon style={{ width: '20px' }} />
             </button>
           </div>
         )}
